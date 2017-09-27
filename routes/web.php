@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/','HomeController@index');
+
+//路由组
+Route::group(['midderware'=>'auth','namespace'=>'Admin','prefix'=>'admin'],function() {
+    Route::get('/','HomeController@index');
+    Route::resource('article','ArticleController');
 });
